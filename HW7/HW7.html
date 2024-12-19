@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <style>
+        body {
+            display: flex;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            color: #333;
+        }
+
+        .sidebar {
+            background-color: #1a1a1a;
+            color: white;
+            width: 30%;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .sidebar img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .sidebar h1 {
+            font-size: 24px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar h1 button {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            padding: 2px 5px;
+        }
+
+        .sidebar .about,
+        .sidebar .contact {
+            margin: 30px 0;
+        }
+
+        .content {
+            width: 70%;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        .content section {
+            margin-bottom: 40px;
+        }
+
+        .content h2 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        .content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content ul li {
+            margin: 10px 0;
+        }
+
+        .content .music {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .content .music .song {
+            display: inline-block;
+            text-align: center;
+            width: 80px;
+        }
+
+        .content .music img {
+            width: 50px;
+            margin-bottom: 8px;
+        }
+
+        .content .note {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+    <script>
+        function editName() {
+            const nameElement = document.getElementById('name');
+            const newName = prompt('Enter your new name:', nameElement.textContent);
+            if (newName) {
+                nameElement.textContent = newName;
+            }
+        }
+
+        function addMusic() {
+            const musicName = prompt("Enter the music name:");
+            const musicLink = prompt("Enter the Spotify link:");
+            
+            if (!musicName || !musicLink) {
+                alert("Both fields are required!");
+                return;
+            }
+
+            const musicSection = document.querySelector(".music > div");
+            const songElement = document.createElement("a");
+            songElement.href = musicLink;
+            songElement.className = "song";
+            songElement.target = "_blank"; // Open in a new tab
+
+            const imgElement = document.createElement("img");
+            imgElement.src = "spotify_icon.png";
+            imgElement.alt = musicName;
+
+            const nameElement = document.createElement("div");
+            nameElement.textContent = musicName;
+
+            songElement.appendChild(imgElement);
+            songElement.appendChild(nameElement);
+
+            musicSection.appendChild(songElement);
+        }
+    </script>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="profile.png" alt="Profile Image">
+        <h1>
+            <span id="name">Malulu</span>
+            <button onclick="editName()">edit</button>
+        </h1>
+        <div class="about">
+            <h3>ABOUT ME</h3>
+            <p>I am a freshman in the Department of Management Information Systems at National Chengchi University. I am very interested in studying programming and computer science fundamentals. I have experience in writing Java, HTML, CSS, JavaScript, and Python.</p>
+        </div>
+        <div class="contact">
+            <img src="logo.png" alt="University Logo" style="width: 100px;">
+        </div>
+    </div>
+
+    <div class="content">
+        <section>
+            <h2>Education</h2>
+            <ul>
+                <li><strong>2023 - now:</strong> National Chengchi University, Department of MIS Computer Science</li>
+                <li><strong>2021 - 2023:</strong> Taipei Lishan High School - Participated in astronomy club</li>
+                <li><strong>2018 - 2021:</strong> Middle School Graduation</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Homework List</h2>
+            <ul>
+                <li><a href="https://github.com/Malulu-Cristallord/113306019_Lab1">Lab1 - GitHub Link</a></li>
+                <li><a href="https://github.com/Malulu-Cristallord/113306019_HW2">HW2 - GitHub Link</a></li>
+                <li><a href="https://github.com/Malulu-Cristallord/113306019_HW3">HW3 - GitHub Link</a></li>
+            </ul>
+        </section>
+
+        <section class="music">
+            <h2>Favorite Music</h2>
+            <div>
+                <p></p>
+                <a href="https://open.spotify.com/album/7MaDGgu25WmGSSh4JZn22X" class="song">
+                    <img src="spotify_icon.png" alt="Hiasobi">
+                    <div>Hiasobi</div>
+                </a>
+                <a href="https://open.spotify.com/track/4rTRAGJ2zNHH7vPrKO0fQj" class="song">
+                    <img src="spotify_icon.png" alt="Poka Poka Planet">
+                    <div>Poka Poka Planet</div>
+                </a>
+                <a href="https://open.spotify.com/track/3PPmMhWgdXL6a40TCDbaWF" class="song">
+                    <img src="spotify_icon.png" alt="Proposal, Flower, Wolf Part 1">
+                    <div>Proposal</div>
+                </a>
+                <a href="https://open.spotify.com/track/03UrZgTINDqvnUMbbIMhql" class="song">
+                    <img src="spotify_icon.png" alt="Gangnam Style">
+                    <div>Gangnam Style</div>
+                </a>
+                <a href="https://open.spotify.com/track/3yvFgbpN9zxx050LtJH6u7" class="song">
+                    <img src="spotify_icon.png" alt="Knight of the Wind">
+                    <div>Knight of the Wind</div>
+                </a>
+            </div>
+            <button style="margin-top: 10px;" onclick="addMusic()">add</button>
+        </section>
+    </div>
+</body>
+</html>
